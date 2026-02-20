@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KFA.MyBlog", "KFA.MyBlog\KFA.MyBlog.csproj", "{999C132F-C8B1-4498-B50C-CC2E0320B850}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KFA.MyBlog.DAL", "KFA.MyBlog.DAL\KFA.MyBlog.DAL.csproj", "{C029E996-48FC-4EAE-B243-4CBD4EA6F117}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{999C132F-C8B1-4498-B50C-CC2E0320B850}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{999C132F-C8B1-4498-B50C-CC2E0320B850}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{999C132F-C8B1-4498-B50C-CC2E0320B850}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C029E996-48FC-4EAE-B243-4CBD4EA6F117}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C029E996-48FC-4EAE-B243-4CBD4EA6F117}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C029E996-48FC-4EAE-B243-4CBD4EA6F117}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C029E996-48FC-4EAE-B243-4CBD4EA6F117}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

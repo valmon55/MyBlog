@@ -1,4 +1,4 @@
-using KFA.MyBlog.Models;
+using KFA.MyBlog.BLL.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

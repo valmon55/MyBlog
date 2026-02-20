@@ -1,4 +1,4 @@
-namespace KFA.MyBlog.Models
+namespace KFA.MyBlog.BLL.ViewModels
 {
     public class ErrorViewModel
     {
