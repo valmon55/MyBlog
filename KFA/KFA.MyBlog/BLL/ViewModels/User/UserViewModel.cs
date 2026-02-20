@@ -32,8 +32,8 @@ namespace KFA.MyBlog.BLL.ViewModels.User
         public string Login { get; set; }
         public List<UserRole> UserRoles { get; set; }
         public Dictionary<UserRole, bool> CheckedRolesDic { get; set; }
-        public User User { get; set; }
-        public UserViewModel(User user) => User = user;
+        public KFA.MyBlog.DAL.Entities.User User { get; set; }
+        public UserViewModel(KFA.MyBlog.DAL.Entities.User user) => User = user;
         public UserViewModel() { }
     }
 }
