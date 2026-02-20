@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="BLL\Extentions\" />
-    <Folder Include="BLL\Validators\" />
     <Folder Include="Migrations\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
   </ItemGroup>
 
   <ItemGroup>
