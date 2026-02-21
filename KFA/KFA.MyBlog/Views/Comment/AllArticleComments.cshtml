@@ -1,0 +1,31 @@
+﻿@model List<KFA.MyBlog.BLL.ViewModels.Comment.CommentViewModel>
+
+@using KFA.MyBlog.DAL.Entities
+
+@{
+    ViewData["Title"] = "Все комментарии";
+}
+
+<link rel="stylesheet" href="~/css/main-page.css" />
+
+<div>
+    @foreach(var comment in Model)
+    {
+        <div class="article-block">
+            <hr>
+            <span>@comment.CommentDate.ToShortDateString() @comment.CommentDate.ToShortTimeString()</span>
+            @*<span>@comment.User.First_Name @comment.User.Last_Name</span>*@
+            <textarea class="textarea" placeholder="Комментарий" disabled>@comment.Comment</textarea>
+            <a class="btn-submit" method="get" asp-action="Update" asp-route-id=@comment.Id>Редактировать</a>
+            <form method="post" asp-controller="Comment" asp-action="Delete" asp-route-id=@comment.Id>
+                <input class="btn-submit btn-delete" type="submit" value="Удалить" />
+            </form>
+        </div>
+    }
+    <div>
+        <hr>
+@*        <form method="get" asp-controller="Comment" asp-action="AddComment" >
+            <input type="submit" value="Добавить" />
+        </form>
+*@    </div>
+</div>
