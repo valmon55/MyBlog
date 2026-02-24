@@ -18,7 +18,7 @@ namespace KFA.MyBlog.Controllers
         public IActionResult Index()
         {
             _logger.LogInformation("¬ыполн€етс€ переход на стартовую страницу.");
-            return View();
+            //return View();
             return RedirectToAction("AllArticles", "Article");
         }
 

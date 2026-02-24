@@ -1,0 +1,158 @@
+﻿.row{
+    display:flex;
+    flex-wrap:wrap;
+}
+.side{
+    flex:75%;
+    padding:20px;
+}
+.main {
+    flex: 25%;
+    padding: 20px;    
+}
+.background-main {
+    background-color: cornsilk;
+}
+.footer{
+    padding:20px;
+    text-align:center;    
+}
+.background-footer {
+    background-color: burlywood;
+}
+.topnav{
+    padding:20px;
+    text-align:center;
+    width:100%;    
+}
+.background-topnav {
+    background-color: burlywood !important;
+}
+.vert-spacing {
+    margin: 20px 0px;
+}
+.padding-20 {
+    padding: 0px 20px;
+}
+.btn-submit {
+    background-color:limegreen;
+    color:white;
+    padding: 5px 20px;
+    margin: 5px 0px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.btn-delete {
+    color: crimson;
+    border: none;
+    padding: 5px 20px;
+    margin: 5px 0px;
+}
+.inline {
+    display:inline;
+}
+.btn-list li {
+    display: inline;
+}
+.frm-text {
+    width: 100%;
+}
+.frm {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.mrgn {
+    margin: 5px;
+}
+.text-color-gray {
+    color: slategray;
+}
+
+.center {
+    text-align: center;
+    align-content: center;
+    margin: 5px;
+}
+
+.enter-submit {
+    background-color: #5181b8;
+    color: white;
+    padding: 5px 20px;
+    margin: 5px 0px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.date-control {
+    width: 10%;
+    display: inline;
+    min-width: max-content;
+}
+
+.date-box {
+    width: 100%;
+}
+.navbar-right {
+    float: right !important;
+}
+.navbar-right li {
+    display: inline-block;
+}
+.article-block {
+    align-content: flex-start;
+    width: 80%;
+    height: auto;
+    margin: 10px;
+    padding: 10px;
+}
+.tag-block {
+    align-content: flex-start;
+    width: 30%;
+    height: auto;
+    margin: 10px;
+}
+.txt-size {
+    width: 80%;
+    height: auto;
+    margin: 10px;
+}
+.textarea {
+    display: block;
+    max-width: 100%;
+    min-width: 100%;
+    padding: calc(0.75em - 1px);
+    resize: none;
+}
+textarea-view {
+    display: block;
+    max-width: 100%;
+    min-width: 100%;
+    padding: calc(0.75em - 1px);
+    resize: none;
+}

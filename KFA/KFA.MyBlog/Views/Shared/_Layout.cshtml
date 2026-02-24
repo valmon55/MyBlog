@@ -4,7 +4,7 @@
 @inject UserManager<User> UserManager;
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/main-page.css" />
 </head>
-<body class="background-main">
+<body class="background-main d-flex flex-column h-100">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 background-topnav">
             <div class="container">
@@ -78,14 +78,14 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3 flex-shrink-0">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted background-footer">
+    <footer class="mt-auto py-3 footer text-muted background-footer">
         <div class="container">
-            &copy; 2024 - ASP.Blog - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - MyBlog - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
