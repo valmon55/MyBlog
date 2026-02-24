@@ -77,14 +77,14 @@ namespace KFA.MyBlog
                 .ForMember(x => x.Tag_Name, opt => opt.MapFrom(c => c.Tag_Name));
 
             CreateMap<Comment, CommentViewModel>()
-                .ForMember(x => x.Id, opt => opt.MapFrom(c => c.ID))
+                .ForMember(x => x.Id, opt => opt.MapFrom(c => c.Id))
                 .ForMember(x => x.Comment, opt => opt.MapFrom(c => c.Comment_Text))
                 .ForMember(x => x.CommentDate, opt => opt.MapFrom(c => c.CommentDate))
                 .ForMember(x => x.UserId, opt => opt.MapFrom(c => c.UserId))
                 .ForMember(x => x.ArticleId, opt => opt.MapFrom(c => c.ArticleId));
 
             CreateMap<CommentViewModel, Comment>()
-                .ForMember(x => x.ID, opt => opt.MapFrom(c => c.Id))
+                .ForMember(x => x.Id, opt => opt.MapFrom(c => c.Id))
                 .ForMember(x => x.Comment_Text, opt => opt.MapFrom(c => c.Comment))
                 .ForMember(x => x.CommentDate, opt => opt.MapFrom(c => c.CommentDate))
                 .ForMember(x => x.UserId, opt => opt.MapFrom(c => c.UserId))

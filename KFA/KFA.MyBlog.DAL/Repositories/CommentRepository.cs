@@ -16,7 +16,7 @@ namespace KFA.MyBlog.DAL.Repositories
         }
         public Comment GetCommentById(int id)
         {
-            return Set.AsEnumerable().Where(x => x.ID == id).FirstOrDefault();
+            return Set.AsEnumerable().Where(x => x.Id == id).FirstOrDefault();
         }
         public List<Comment> GetCommentsByArticleId(int articleId)
         {

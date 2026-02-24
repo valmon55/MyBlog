@@ -14,6 +14,7 @@ namespace KFA.MyBlog.DAL.Configs
         public void Configure(EntityTypeBuilder<Tag> builder)
         {
             builder.ToTable("Tags").HasKey(p => p.ID);
+            builder.Property(x => x.ID).UseIdentityColumn();
         }
     }
 }

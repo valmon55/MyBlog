@@ -8,7 +8,7 @@ namespace KFA.MyBlog.DAL.Entities
 {
     public class Comment
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public DateTime CommentDate { get; set; }
         public string Comment_Text { get; set; }
         public int ArticleId { get; set; }

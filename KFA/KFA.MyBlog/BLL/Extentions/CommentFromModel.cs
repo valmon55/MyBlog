@@ -7,7 +7,7 @@ namespace KFA.MyBlog.BLL.Extentions
     {
         public static Comment Convert(this Comment comment, CommentViewModel commentViewModel)
         {
-            comment.ID = commentViewModel.Id;
+            comment.Id = commentViewModel.Id;
             comment.ArticleId = commentViewModel.ArticleId;
             comment.UserId = commentViewModel.UserId;
             comment.CommentDate = commentViewModel.CommentDate;

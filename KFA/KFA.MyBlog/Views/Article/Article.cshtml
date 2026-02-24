@@ -40,8 +40,8 @@
         @if (SignInManager.IsSignedIn(User))
         {
             <div>
-                <a class="btn-submit" method="get" asp-controller="Comment" asp-action="Update" asp-route-id=@comment.ID>Редактировать</a>
-                <form class="inline" method="post" asp-controller="Comment" asp-action="Delete" asp-route-id=@comment.ID>
+                <a class="btn-submit" method="get" asp-controller="Comment" asp-action="Update" asp-route-id=@comment.Id>Редактировать</a>
+                <form class="inline" method="post" asp-controller="Comment" asp-action="Delete" asp-route-id=@comment.Id>
                     <input class="background-main btn-delete" type="submit" value="Удалить" />
                 </form>
             </div>

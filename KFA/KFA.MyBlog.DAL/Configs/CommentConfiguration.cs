@@ -13,7 +13,8 @@ namespace KFA.MyBlog.DAL.Configs
     {
         public void Configure(EntityTypeBuilder<Comment> builder)
         {
-            builder.ToTable("Comments").HasKey(p => p.ID);
+            builder.ToTable("Comments").HasKey(p => p.Id);
+            builder.Property(x => x.Id).UseIdentityColumn();
         }
     }
 }

@@ -13,8 +13,8 @@ namespace KFA.MyBlog.Controllers
             _logger = logger;
         }
 
-        //[Route("")]
-        //[Route("[controller]/[action]")]
+        [Route("")]
+        [Route("[controller]/[action]")]
         public IActionResult Index()
         {
             _logger.LogInformation("¬ыполн€етс€ переход на стартовую страницу.");
