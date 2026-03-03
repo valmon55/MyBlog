@@ -13,8 +13,8 @@ namespace KFA.MyBlog.DAL.Configs
     {
         public void Configure(EntityTypeBuilder<Article> builder)
         {
-            builder.ToTable("Articles").HasKey(p => p.ID);
-            builder.Property(x => x.ID).UseIdentityColumn();
+            builder.ToTable("Articles").HasKey(p => p.Id);
+            builder.Property(x => x.Id).UseIdentityColumn();
         }
     }
 }

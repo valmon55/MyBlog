@@ -21,7 +21,7 @@ namespace KFA.MyBlog.DAL.Repositories
         }
         public Tag GetTagById(int id)
         {
-            return Set.AsEnumerable().Where(x => x.ID == id).FirstOrDefault();
+            return Set.AsEnumerable().Where(x => x.Id == id).FirstOrDefault();
         }
         public void AddTag(Tag tag)
         {

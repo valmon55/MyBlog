@@ -20,9 +20,10 @@
     {
         <form method="post" asp-controller="Article" asp-action="AddArticle">
             <div asp-validation-summary="ModelOnly"></div>
+            <input asp-for="User" value=@Model.User hidden />
             @foreach (var tag in Model.Tags)
             {
-                <input type="checkbox" name="SelectedTags" value=@tag.ID />
+                <input type="checkbox" name="SelectedTags" value=@tag.Id />
                 <label class="badge badge-primary"> @tag.Tag_Name</label>
             }
             <h5 class="vert-spacing"> Автор: @Model.User.First_Name @Model.User.Last_Name</h5> 

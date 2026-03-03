@@ -1,5 +1,6 @@
 ﻿using KFA.MyBlog.DAL.Entities;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace KFA.MyBlog.BLL.ViewModels.User
 {
@@ -12,7 +13,9 @@ namespace KFA.MyBlog.BLL.ViewModels.User
         [Required(ErrorMessage = "Поле фамилия обязательно к заполнению")]
         [Display(Name = "Фамилия", Prompt = "Введите фамилию")]
         public string Last_Name { get; set; }
-        public string Middle_Name { get; set; }
+
+        [Display(Name = "Отчество", Prompt = "Введите отчество")]
+        public string? Middle_Name { get; set; }
         [Required(ErrorMessage = "Поле Email обязательно к заполнению")]
         [EmailAddress]
         [Display(Name = "Email", Prompt = "Введите email")]
@@ -32,8 +35,5 @@ namespace KFA.MyBlog.BLL.ViewModels.User
         public string Login { get; set; }
         public List<UserRole> UserRoles { get; set; }
         public Dictionary<UserRole, bool> CheckedRolesDic { get; set; }
-        public KFA.MyBlog.DAL.Entities.User User { get; set; }
-        public UserViewModel(KFA.MyBlog.DAL.Entities.User user) => User = user;
-        public UserViewModel() { }
     }
 }

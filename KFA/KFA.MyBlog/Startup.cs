@@ -36,6 +36,7 @@ namespace KFA.MyBlog
 
             services
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<ArticleViewModelValidator>())
+                //.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters(fv => fv.)
                 .AddDbContext<MyBlogContext>(options => options.UseSqlServer(connection))
                 .AddUnitOfWork()
                 .AddCustomRepository<Article, ArticleRepository>()

@@ -36,7 +36,7 @@ namespace KFA.MyBlog.Services
         {
             var tagsId = new List<int>();
             var tagRepo = _unitOfWork.GetRepository<Tag>() as TagRepository;
-            SelectedTags.ForEach(id => tagsId.Add(tagRepo.GetTagById(id).ID));
+            SelectedTags.ForEach(id => tagsId.Add(tagRepo.GetTagById(id).Id));
             var tags = new List<Tag>();
             foreach (var tag in tagsId)
             {
@@ -143,7 +143,7 @@ namespace KFA.MyBlog.Services
             var tagRepo = _unitOfWork.GetRepository<Tag>() as TagRepository;
 
             var tagsId = new List<int>();
-            SelectedTags.ForEach(id => tagsId.Add(tagRepo.GetTagById(id).ID));
+            SelectedTags.ForEach(id => tagsId.Add(tagRepo.GetTagById(id).Id));
             var tags = new List<Tag>();
             foreach (var tag in tagsId)
             {

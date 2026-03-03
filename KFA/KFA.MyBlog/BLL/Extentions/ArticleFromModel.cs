@@ -7,7 +7,7 @@ namespace KFA.MyBlog.BLL.Extentions
     {
         public static Article Convert(this Article article, ArticleViewModel articleViewModel)
         {
-            article.ID = articleViewModel.Id;
+            article.Id = articleViewModel.Id;
             article.Title = articleViewModel.Title;
             article.Content = articleViewModel.Content;
             article.ArticleDate = articleViewModel.ArticleDate;

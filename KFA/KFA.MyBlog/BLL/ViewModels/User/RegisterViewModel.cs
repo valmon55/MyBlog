@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace KFA.MyBlog.BLL.ViewModels.User
 {
@@ -10,6 +11,8 @@ namespace KFA.MyBlog.BLL.ViewModels.User
         [Required]
         [Display(Name = "Фамилия", Prompt = "Введите фамилию")]
         public string Last_Name { get; set; }
+        [Required]
+        [Display(Name = "Отчество", Prompt = "Введите отчество")]
         public string Middle_Name { get; set; }
         [Required(ErrorMessage = "Поле Email обязательно к заполнению")]
         [EmailAddress]

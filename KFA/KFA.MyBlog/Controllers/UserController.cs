@@ -60,35 +60,46 @@ namespace KFA.MyBlog.Controllers
                 }
 
                 var user = _mapper.Map<User>(model);
-
-                var result = await _userManager.CreateAsync(user, model.PasswordReg);
-                if (result.Succeeded)
+                if (_userManager.FindByEmailAsync(user.Email).Result != null)
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-
-                    var currentUser = await _userManager.FindByIdAsync(Convert.ToString(user.Id));
-
-                    ///добавляет в таблицу [AspNetUserRoles] соответствие между ролью и пользователем
-                    await _userManager.AddToRoleAsync(currentUser, userRole.Name);
-
-                    await _signInManager.RefreshSignInAsync(currentUser);
-
-                    _logger.LogInformation($"Пользователь {user.Last_Name} {user.First_Name} зарегистрирован.");
-
-                    return RedirectToAction("Index", "Home");
+                    ModelState.AddModelError("", "Пользователь с таким Email уже зарегистрирован");
+                    return View(model);
                 }
                 else
                 {
-                    _logger.LogError("Возникли ошибки при регистрации:");
-                    foreach (var error in result.Errors)
-                    {
-                        _logger.LogError($"Код ошибки: {error.Code}{Environment.NewLine}Описание: {error.Description}");
-                        ModelState.AddModelError(string.Empty, error.Description);
-                    }
 
+                    var result = await _userManager.CreateAsync(user, model.PasswordReg);
+                    if (result.Succeeded)
+                    {
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+
+                        var currentUser = await _userManager.FindByIdAsync(Convert.ToString(user.Id));
+
+                        ///добавляет в таблицу [AspNetUserRoles] соответствие между ролью и пользователем
+                        await _userManager.AddToRoleAsync(currentUser, userRole.Name);
+
+                        await _signInManager.RefreshSignInAsync(currentUser);
+
+                        _logger.LogInformation($"Пользователь {user.Last_Name} {user.First_Name} зарегистрирован.");
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        _logger.LogError("Возникли ошибки при регистрации:");
+                        foreach (var error in result.Errors)
+                        {
+                            _logger.LogError($"Код ошибки: {error.Code}{Environment.NewLine}Описание: {error.Description}");
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
+                        return View(model);
+                    }
                 }
             }
-            return RedirectToAction("Index", "Home");
+            else
+            {
+                return View(model);
+            }
         }
 
         [Route("Login")]
@@ -104,33 +115,37 @@ namespace KFA.MyBlog.Controllers
             if (ModelState.IsValid)
             {
                 var user = _mapper.Map<User>(model);
-                User signedUser = _userManager.Users.Include(x => x.userRole).FirstOrDefault(u => u.Email == model.Email);
-                var userRole = _userManager.GetRolesAsync(signedUser).Result.FirstOrDefault();
+                User signedUser = _userManager.Users.//Include(x => x.userRole).
+                    FirstOrDefault(u => u.Email == model.Email);
+                string userRole;
                 if (signedUser is null)
                 {
                     _logger.LogError($"Логин {user.Email} не найден");
                     ModelState.AddModelError("", "Неверный логин!");
+                    return View();
                 }
-                /// Если ролей почему-то нет, то устанавливаем:
-                /// для пользователя Admin - роль Admin
-                /// для остальных - User
-                if (userRole is null)
+                else
                 {
-                    _logger.LogError($"У пользователя {signedUser.UserName} нет роли!");
-                    if (signedUser.UserName == "Admin")
-                    {
-                        await _userManager.AddToRoleAsync(signedUser, "Admin");
-                    }
-                    else
-                    {
-                        await _userManager.AddToRoleAsync(signedUser, "User");
-                    }
                     userRole = _userManager.GetRolesAsync(signedUser).Result.FirstOrDefault();
-                    _logger.LogWarning($"Пользователю {signedUser.userRole} присвоили роль {userRole}");
-                }
 
-                if (signedUser != null)
-                {
+                    /// Если ролей почему-то нет, то устанавливаем:
+                    /// для пользователя Admin - роль Admin
+                    /// для остальных - User
+                    if (userRole is null)
+                    {
+                        _logger.LogError($"У пользователя {signedUser.UserName} нет роли!");
+                        if (signedUser.UserName == "Admin")
+                        {
+                            await _userManager.AddToRoleAsync(signedUser, "Admin");
+                        }
+                        else
+                        {
+                            await _userManager.AddToRoleAsync(signedUser, "User");
+                        }
+                        userRole = _userManager.GetRolesAsync(signedUser).Result.FirstOrDefault();
+                        //_logger.LogWarning($"Пользователю {signedUser.userRole} присвоили роль {userRole}");
+                    }
+
                     var claims = new List<Claim>()
                     {
                         new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
@@ -138,15 +153,15 @@ namespace KFA.MyBlog.Controllers
                     };
 
                     await _signInManager.SignInWithClaimsAsync(signedUser, isPersistent: false, claims);
-                }
-                else
-                {
-                    _logger.LogError($"Логин {user.Email} не найден");
-                    ModelState.AddModelError("", $"Логин {user.Email} не найден");
+
+                    _logger.LogInformation($"Перенаправление на главную страницу.");
+                    return RedirectToAction("Index", "Home");
                 }
             }
-            _logger.LogInformation($"Перенаправление на главную страницу.");
-            return RedirectToAction("Index", "Home");
+            else
+            {
+                return View();
+            }
         }
         [Route("Logout")]
         [HttpGet]
@@ -197,28 +212,6 @@ namespace KFA.MyBlog.Controllers
         [HttpGet]
         public IActionResult Update(string userId)
         {
-            //var repo = _unitOfWork.GetRepository<User>() as UserRepository;
-            //var user = repo.GetUserById(userId);
-            //var userView = _mapper.Map<UserViewModel>(user);
-            //_logger.LogInformation($"Пользователь для обновления: {user.UserName}");
-
-            //var allRoles = _roleManager.Roles.ToList();
-            //var checkedRolesDic = new Dictionary<UserRole, bool>();
-            //foreach (var role in allRoles)
-            //{
-            //    if (_userManager.IsInRoleAsync(user, role.Name).Result)
-            //    {
-            //        checkedRolesDic.Add(role, true);
-            //    }
-            //    else
-            //    {
-            //        checkedRolesDic.Add(role, false);
-            //    }
-            //}
-
-            //userView.CheckedRolesDic = checkedRolesDic;
-
-            //return View("EditUser", userView);
             return View("EditUser", _userService.UpdateUser(userId));
         }
 
@@ -229,31 +222,6 @@ namespace KFA.MyBlog.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var user = await _userManager.FindByIdAsync(model.Id);
-
-                //var roles = await _roleManager.Roles.ToListAsync();
-
-                //foreach (var role in roles)
-                //{
-                //    //определяем есть ли роль у пользователя
-                //    var IsInRole = await _userManager.IsInRoleAsync(user, role.Name);
-
-                //    //добавляем роль
-                //    if (SelectedRoles.Contains(role.Id) && !IsInRole)
-                //    {
-                //        await _userManager.AddToRoleAsync(user, role.Name);
-                //    }
-                //    //убираем роль
-                //    if (!SelectedRoles.Contains(role.Id) && IsInRole)
-                //    {
-                //        await _userManager.RemoveFromRoleAsync(user, role.Name);
-                //    }
-
-                //}
-
-                //user.Convert(model);
-                //await _userManager.UpdateAsync(user);
-                //_logger.LogInformation($"Пользователь {user.UserName} обновлен.");
                 await _userService.UpdateUser(model, SelectedRoles);
             }
             else
@@ -270,10 +238,6 @@ namespace KFA.MyBlog.Controllers
         [HttpPost]
         public IActionResult Delete(string userId)
         {
-            //var repo = _unitOfWork.GetRepository<User>() as UserRepository;
-            //var user = repo.GetUserById(userId);
-            //repo.DeleteUser(user);
-            //_logger.LogInformation($"Пользователь с ID = {userId} удален.");
             _userService.DeleteUser(userId);
 
             return RedirectToAction("AllUsers");

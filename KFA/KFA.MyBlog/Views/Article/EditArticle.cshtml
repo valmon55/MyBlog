@@ -24,11 +24,11 @@
             {
                 if(tag.Value == true)
                 {
-                    <input type="checkbox" name="SelectedTags" checked="checked" value=@tag.Key.ID />
+                    <input type="checkbox" name="SelectedTags" checked="checked" value=@tag.Key.Id />
                 }
                 else
                 {
-                    <input type="checkbox" name="SelectedTags" value=@tag.Key.ID />
+                    <input type="checkbox" name="SelectedTags" value=@tag.Key.Id />
                 }
                 <label class="badge badge-primary"> @tag.Key.Tag_Name</label>                
                 @* <input type="hidden" name="checkedTagsDic[@tag.Key]" value="@tag.Value" /> *@

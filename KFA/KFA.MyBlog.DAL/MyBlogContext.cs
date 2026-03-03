@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace KFA.MyBlog.DAL
 {
-    public class MyBlogContext : IdentityDbContext<User>
+    public class MyBlogContext : IdentityDbContext<User, UserRole, string>
     {
         public override DbSet<User> Users { get; set; }
         public DbSet<Article> Articles { get; set; }
@@ -26,33 +26,33 @@ namespace KFA.MyBlog.DAL
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<IdentityUserRole<string>>(entity =>
-            {
-                //entity.HasKey(ur => new { ur.UserId, ur.RoleId });
+            //builder.Entity<IdentityUserRole<string>>(entity =>
+            //{
+            //    //entity.HasKey(ur => new { ur.UserId, ur.RoleId });
 
-                // Настройка связи с пользователем
-                entity.HasOne<User>()
-                    .WithMany()
-                    .HasForeignKey(ur => ur.UserId)
-                    .OnDelete(DeleteBehavior.Restrict); // Изменяем с Cascade на Restrict
+            //    // Настройка связи с пользователем
+            //    entity.HasOne<User>()
+            //        .WithMany()
+            //        .HasForeignKey(ur => ur.UserId)
+            //        .OnDelete(DeleteBehavior.Restrict); // Изменяем с Cascade на Restrict
 
-                // Настройка связи с ролью
-                entity.HasOne<UserRole>()
-                    .WithMany()
-                    .HasForeignKey(ur => ur.RoleId)
-                    .OnDelete(DeleteBehavior.Restrict); // Изменяем с Cascade на Restrict
-            });
+            //    // Настройка связи с ролью
+            //    entity.HasOne<UserRole>()
+            //        .WithMany()
+            //        .HasForeignKey(ur => ur.RoleId)
+            //        .OnDelete(DeleteBehavior.Restrict); // Изменяем с Cascade на Restrict
+            //});
 
-            builder.Entity<Article>(entity =>
-            {
-                //entity.HasKey(c => new { c.Id });
+            //builder.Entity<Article>(entity =>
+            //{
+            //    //entity.HasKey(c => new { c.Id });
 
-                entity.HasOne<User>(u => u.User)
-                    .WithMany(a => a.Articles)
-                    .HasForeignKey(c => c.UserId)
-                    //.HasConstraintName("FK_Comments_AspNetUsers_UserId")
-                    .OnDelete(DeleteBehavior.Restrict); // Изменяем с Cascade на Restrict
-            });
+            //    entity.HasOne<User>(u => u.User)
+            //        .WithMany(a => a.Articles)
+            //        .HasForeignKey(c => c.UserId)
+            //        //.HasConstraintName("FK_Comments_AspNetUsers_UserId")
+            //        .OnDelete(DeleteBehavior.Cascade); // Изменяем с Cascade на Restrict
+            //});
 
             builder.Entity<Comment>(entity =>
             {
@@ -62,6 +62,7 @@ namespace KFA.MyBlog.DAL
                     //.HasConstraintName("FK_Comments_AspNetUsers_UserId")
                     .OnDelete(DeleteBehavior.Restrict); // Изменяем с Cascade на Restrict
             });
+
             builder.ApplyConfiguration<Article>(new ArticleConfiguration());
             builder.ApplyConfiguration<Comment>(new CommentConfiguration());
             builder.ApplyConfiguration<Tag>(new TagConfiguration());

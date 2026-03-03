@@ -14,6 +14,6 @@ namespace KFA.MyBlog.DAL.Entities
         public string Middle_Name { get; set; }
         public DateTime BirthDate { get; set; }
         public List<Article> Articles { get; set; }
-        public UserRole userRole { get; set; }
+        //public UserRole userRole { get; set; }
     }
 }

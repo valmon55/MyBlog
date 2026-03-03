@@ -7,7 +7,7 @@ namespace KFA.MyBlog.BLL.Extentions
     {
         public static Tag Convert(this Tag tag, TagViewModel tagViewModel)
         {
-            tag.ID = tagViewModel.Id;
+            tag.Id = tagViewModel.Id;
             tag.Tag_Name = tagViewModel.Tag_Name;
 
             return tag;
