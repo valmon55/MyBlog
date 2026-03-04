@@ -50,7 +50,21 @@ namespace KFA.MyBlog.Controllers
             {
                 ///Создание пользователей с 3 разными ролями
                 var userRole = new UserRole() { Name = "User", Description = "Пользователь" };
-                //var userRole = new UserRole() { Name = "Admin", Description = "Администратор" };
+                
+                /* Временно! Пользователь Admin есть. Создаём роль Admin и назначаем её этому пользователю */
+                // TODO: сделать первоначальную загрузку пользователя Admin с ролью Admin
+                //var adminRole = new UserRole() { Name = "Admin", Description = "Администратор" };
+                //if (!_roleManager.RoleExistsAsync(adminRole.Name).Result)
+                //{
+                //    await _roleManager.CreateAsync(adminRole);
+                //    var admin = _userManager.FindByEmailAsync("Admin@a.ru").Result;
+                //    if (admin != null)
+                //    {
+                //        await _userManager.AddToRoleAsync(admin, adminRole.Name);
+                //    }
+                //    return RedirectToAction("Index", "Home");
+                //}
+
                 //var userRole = new UserRole() { Name = "Moderator", Description = "Модератор" };
 
                 //var roles = _roleManager.Roles.ToList();
@@ -223,15 +237,16 @@ namespace KFA.MyBlog.Controllers
             if (ModelState.IsValid)
             {
                 await _userService.UpdateUser(model, SelectedRoles);
+                _logger.LogInformation($"Перенаправление на страницу просмотра всех пользователей");
+
+                return RedirectToAction("AllUsers");
             }
             else
             {
                 _logger.LogError("Модель UserViewModel не прошла проверку!");
                 ModelState.AddModelError("", "Некорректные данные");
+                return View(model);
             }
-            _logger.LogInformation($"Перенаправление на страницу просмотра всех пользователей");
-
-            return RedirectToAction("AllUsers");
         }
         [Authorize(Roles = "Admin")]
         [Route("User/Delete")]

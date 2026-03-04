@@ -33,7 +33,7 @@ namespace KFA.MyBlog.BLL.ViewModels.User
         [DataType(DataType.Text)]
         [Display(Name = "Логин", Description = "Введите логин")]
         public string Login { get; set; }
-        public List<UserRole> UserRoles { get; set; }
-        public Dictionary<UserRole, bool> CheckedRolesDic { get; set; }
+        public List<UserRole>? UserRoles { get; set; }
+        public Dictionary<UserRole, bool>? CheckedRolesDic { get; set; }
     }
 }

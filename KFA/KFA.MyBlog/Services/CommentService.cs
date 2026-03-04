@@ -27,7 +27,7 @@ namespace KFA.MyBlog.Services
         public CommentViewModel AddComment(int articleId)
         {
             _logger.LogInformation($"Выполняется переход на страницу добавления комментария для статьи с ID = {articleId}");
-            return new CommentViewModel() { ArticleId = articleId };
+            return new CommentViewModel() { ArticleId = articleId, CommentDate = DateTime.Now };
         }
 
         public void AddComment(CommentViewModel model, User user)

@@ -75,8 +75,8 @@ namespace KFA.MyBlog.Controllers
         }
 
         [Authorize]
-        [Route("Delete")]
-        [HttpDelete]
+        [Route("Article/Delete")]
+        [HttpPost]
         public IActionResult Delete(int Id)
         {
             _articleService.DeleteArticle(Id);

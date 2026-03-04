@@ -46,6 +46,7 @@ namespace KFA.MyBlog.Controllers
             {
                 _logger.LogError("Модель RoleViewModel не прошла проверку!");
                 ModelState.AddModelError("", "Ошибка в модели!");
+                return View();
             }
             _logger.LogInformation($"Выполняется переход на страницу просмотра всех ролей");
             return RedirectToAction("AllRoles", "Role");
