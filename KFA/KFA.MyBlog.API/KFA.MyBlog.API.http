@@ -1,0 +1,6 @@
+@KFA.MyBlog.API_HostAddress = http://localhost:5134
+
+GET {{KFA.MyBlog.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

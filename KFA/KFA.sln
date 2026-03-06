@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KFA.MyBlog", "KFA.MyBlog\KFA.MyBlog.csproj", "{999C132F-C8B1-4498-B50C-CC2E0320B850}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KFA.MyBlog", "KFA.MyBlog\KFA.MyBlog.csproj", "{999C132F-C8B1-4498-B50C-CC2E0320B850}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KFA.MyBlog.DAL", "KFA.MyBlog.DAL\KFA.MyBlog.DAL.csproj", "{C029E996-48FC-4EAE-B243-4CBD4EA6F117}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KFA.MyBlog.DAL", "KFA.MyBlog.DAL\KFA.MyBlog.DAL.csproj", "{C029E996-48FC-4EAE-B243-4CBD4EA6F117}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KFA.MyBlog.API", "KFA.MyBlog.API\KFA.MyBlog.API.csproj", "{A07E434C-2FB8-4CC0-A6A6-0FE83113B543}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C029E996-48FC-4EAE-B243-4CBD4EA6F117}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C029E996-48FC-4EAE-B243-4CBD4EA6F117}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C029E996-48FC-4EAE-B243-4CBD4EA6F117}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A07E434C-2FB8-4CC0-A6A6-0FE83113B543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A07E434C-2FB8-4CC0-A6A6-0FE83113B543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A07E434C-2FB8-4CC0-A6A6-0FE83113B543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A07E434C-2FB8-4CC0-A6A6-0FE83113B543}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
