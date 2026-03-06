@@ -13,7 +13,7 @@
 <h2>Добавление комментария</h2>
 <div class="article-block">
     @*<span>Автор @Model.User.First_Name @Model.User.Last_Name</span>*@
-    <form method="post" asp-controller="Comment" asp-action="AddComment">
+    <form class="my-2" method="post" asp-controller="Comment" asp-action="AddComment">
         <div asp-validation-summary="ModelOnly"></div>
         <input asp-for="UserId" hidden/>
         <input asp-for="ArticleId" hidden />
@@ -22,10 +22,12 @@
         <textarea class="textarea" placeholder="Комментарий" asp-for="Comment"></textarea>
         <span asp-validation-for="Comment"></span>
         <div>
-            <input class="btn-submit" type="submit" value="Добавить" />
+            <input class="btn btn-submit" type="submit" value="Добавить" />
         </div>
     </form>
-    <a class="enter-submit" method="get" asp-controller="Article" asp-action="ViewArticle" asp-route-Id=@Model.ArticleId>Вернуться с статье</a>
+    <div class="my-2">
+        <a class="btn enter-submit" method="get" asp-controller="Article" asp-action="ViewArticle" asp-route-Id=@Model.ArticleId>Вернуться с статье</a>
+    </div>
 </div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

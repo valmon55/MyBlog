@@ -11,17 +11,16 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
 
 <h2>Добавление тега</h2>
-<div>Название</div>
-<div class="tag-block">
+<div class="py-2 tag-block">
     <form class="frm" method="post" asp-controller="Tag" asp-action="AddTag">
         <div asp-validation-summary="ModelOnly"></div>
         <textarea class="mrgn textarea" placeholder="Тег" asp-for="Tag_Name"></textarea>
         <span asp-validation-for="Tag_Name"></span>
         <div>
-            <input class="btn-submit" type="submit" value="Добавить" />
+            <input class="btn btn-submit" type="submit" value="Добавить" />
         </div>
     </form>
-    <a class="enter-submit" method="get" asp-action="AllTags" asp-controller="Tag">Перейти к списку всех тегов</a>
+    <a class="py-2 btn enter-submit" method="get" asp-action="AllTags" asp-controller="Tag">Перейти к списку всех тегов</a>
 </div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

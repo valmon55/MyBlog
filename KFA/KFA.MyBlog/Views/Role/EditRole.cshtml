@@ -10,23 +10,25 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
 
 <h2>Редактирование роли</h2>
-<div class="tag-block">    
+<div class="py-3 col-md-2">    
     <form method="post" asp-controller="Role" asp-action="Update" >
         <div asp-validation-summary="ModelOnly"></div>
         <div>
             <input class="form-control" asp-for="ID" hidden />
-            <div>Название роли</div><br />
+            <div class="my-2">Название роли</div><br />
             <input class="form-control" asp-for="Name"/>
             <span asp-validation-for="Name"></span>
             <label>Описание</label><br />
-            <textarea class="textarea" placeholder="Текст статьи" asp-for="Description">@Model.Description</textarea>
+            <textarea class="my-2 textarea" placeholder="Текст статьи" asp-for="Description">@Model.Description</textarea>
             <span asp-validation-for="Description"></span>
         </div>
-        <div>
-            <input class="btn-submit" type="submit" value="Сохранить"/>
+        <div class="my-2">
+            <input class="btn btn-submit" type="submit" value="Сохранить"/>
         </div>
     </form>
-    <a class="enter-submit" method="get" asp-action="AllRoles" asp-controller="Role">Перейти к списку всех ролей</a>
+    <div class="my-2">
+        <a class="btn enter-submit" method="get" asp-action="AllRoles" asp-controller="Role">Перейти к списку всех ролей</a>
+    </div>
 </div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

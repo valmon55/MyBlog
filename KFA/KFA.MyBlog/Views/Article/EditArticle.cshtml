@@ -30,7 +30,7 @@
                 {
                     <input type="checkbox" name="SelectedTags" value=@tag.Key.Id />
                 }
-                <label class="badge badge-primary"> @tag.Key.Tag_Name</label>                
+                <label class="badge badge-primary text-primary"> @tag.Key.Tag_Name</label>                
                 @* <input type="hidden" name="checkedTagsDic[@tag.Key]" value="@tag.Value" /> *@
             }
             <input name="checkedTagsDic" value=@Model.CheckedTagsDic hidden />
@@ -40,22 +40,22 @@
             <div class="article-block">
                 <input class="form-control" asp-for="Id" hidden />
                 <input class="form-control" asp-for="User" hidden />
-                <div class="mrgn">
+                <div class="mrgn my-2">
                     <div>Заголовок</div>
                     <input placeholder="Заголовок" asp-for="Title" />
                     <span asp-validation-for="Title"></span>
                 </div>
-                <div class="mrgn">
+                <div class="mrgn my-2">
                     <div>Текст статьи</div>
                     <textarea class="textarea" placeholder="Текст статьи" asp-for="Content">@Model.Content</textarea>
                     <span asp-validation-for="Content"></span>
                 </div>
-            <div>
-                <input class="btn-submit tag-block" type="submit" value="Сохранить"/>
+            <div class="my-2">
+                <input class="btn btn-submit tag-block" type="submit" value="Сохранить"/>
             </div>
         </form>
         <div>
-            <a class="enter-submit" method="get" asp-action="AllArticles" asp-controller="Article">Вернуться к списку всех статей</a>
+            <a class="btn enter-submit" method="get" asp-action="AllArticles" asp-controller="Article">Вернуться к списку всех статей</a>
         </div>
 
     }

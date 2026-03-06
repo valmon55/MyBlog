@@ -17,36 +17,36 @@
 
 @*<h2></h2>*@
 
-<div>    
+<div>
+    <h2 class="vert-spacing">Пользователи</h2>
+    <div class="my-3 col-md-2">
+        <form method="get" asp-controller="User" asp-action="AddUser">
+            <input class="btn enter-submit" type="submit" value="Добавить" disabled />
+        </form>
+    </div>
     @if (SignInManager.IsSignedIn(User))
     {
-        <h4>Пользователи</h4>
         @foreach(var user in Model)
         {
-            <div class="article-block">
+            <div class="article-block my-2">
                 @foreach (var role in user.UserRoles)
                 {
                     <label class="badge bg-info"> ✔ @role.Name</label>
                 }
-                <div>
+                <div class="my-2">
                     <span>ФИО: @user.First_Name @user.Middle_Name @user.Last_Name</span>
                     <span> Email: @user.Email</span>
                 </div>
-                <div class="vert-spacing">
-                    <a class="btn-submit" method="get" asp-action="Update" asp-route-userId="@user.Id">Редактировать</a>
+                <div class="vert-spacing my-2">
+                    <a class="btn btn-submit my-2 inline" method="get" asp-action="Update" asp-route-userId="@user.Id">Редактировать</a>
                     @if (User.Identity.Name != user.Login)
                     {
-                        <form class="inline" method="post" asp-controller="User" asp-action="Delete" asp-route-userId=@user.Id>
-                            <input class="background-main btn-delete" type="submit" value="Удалить" />
+                        <form class="my-2" method="post" asp-controller="User" asp-action="Delete" asp-route-userId=@user.Id>
+                            <input class="btn btn-danger inline" type="submit" value="Удалить" />
                         </form>
                     }
                 </div>
             </div>
         }
-        <div>
-            <form method="get" asp-controller="User" asp-action="AddUser">
-                <input class="enter-submit" type="submit" value="Добавить" disabled />
-            </form>
-        </div>
     }
 </div>

@@ -15,42 +15,42 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
 
 <h2 class="vert-spacing">Добавление статьи</h2>
-<div class="article-block">    
-    @if (SignInManager.IsSignedIn(User))
-    {
-        <form method="post" asp-controller="Article" asp-action="AddArticle">
-            <div asp-validation-summary="ModelOnly"></div>
-            <input asp-for="User" value=@Model.User hidden />
-            @foreach (var tag in Model.Tags)
-            {
-                <input type="checkbox" name="SelectedTags" value=@tag.Id />
-                <label class="badge badge-primary"> @tag.Tag_Name</label>
-            }
-            <h5 class="vert-spacing"> Автор: @Model.User.First_Name @Model.User.Last_Name</h5> 
-            <div class="mrgn">
-                <div>Заголовок</div>
-                <input placeholder="Заголовок" asp-for="Title" />
-                <span asp-validation-for="Title"></span>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <div class="row-md-4">
+                <form method="post" asp-controller="Article" asp-action="AddArticle">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <input asp-for="User" value=@Model.User hidden />
+                    @foreach (var tag in Model.Tags)
+                    {
+                        <input type="checkbox" name="SelectedTags" value=@tag.Id />
+                        <label class="badge badge-primary text-primary"> @tag.Tag_Name</label>
+                    }
+                    <h5 class="vert-spacing"> Автор: @Model.User.First_Name @Model.User.Last_Name</h5> 
+                    <div class="my-2 mrgn">
+                        <div>Заголовок</div>
+                        <input placeholder="Заголовок" asp-for="Title" />
+                        <span asp-validation-for="Title"></span>
+                    </div>
+                    <div class="mrgn my-2 txt-size">
+                        <div class="my-2">Текст статьи</div>
+                        <textarea class="my-2 textarea" placeholder="Текст статьи" asp-for="Content" ></textarea>
+                        <span asp-validation-for="Content"></span>
+                    </div>
+                    <div class="my-2">
+                        <input class="btn btn-submit inline" type="submit" value="Добавить"/>
+                    </div>
+                </form>
+                <div class="my-2">
+                    <a class="btn enter-submit" method="get" asp-action="AllArticles" asp-controller="Article">Вернуться к списку всех статей</a>
+                </div>
             </div>
-            <div class="txt-size">
-                <div>Текст статьи</div>
-                <textarea class="textarea" placeholder="Текст статьи" asp-for="Content" ></textarea>
-                <span asp-validation-for="Content"></span>
-            </div>
-            <div>
-                <input class="btn-submit" type="submit" value="Добавить"/>
-            </div>
-        </form>
-        <div>
-            <a class="enter-submit" method="get" asp-action="AllArticles" asp-controller="Article">Вернуться к списку всех статей</a>
-        </div>
-    }
-    else
-    {
-        <h4>Статью может написать авторизованный пользователь.</h4>
-        <h6>Войдите или зарегистрируйтесь.</h6>
-    }
-</div>
+        }
+        else
+        {
+            <h4 class="my-2">Статью может написать авторизованный пользователь.</h4>
+            <h6 class="my-2">Войдите или зарегистрируйтесь.</h6>
+        }
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

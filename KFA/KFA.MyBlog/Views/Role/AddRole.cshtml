@@ -10,28 +10,30 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
 
 <h2>Добавление роли</h2>
-<div class="tag-block">
+<div class="">
     <form class="frm" method="post" asp-controller="Role" asp-action="AddRole">
         <div asp-validation-summary="ModelOnly"></div>
-        <div>
+        <div class="my-2">
             <div class="mrgn">
                 <div>Название роли</div><br />
                 <input placeholder="Название роли" asp-for="Name" />
                 <span asp-validation-for="Name"></span>
             </div>
         </div>
-        <div>
+        <div class="my-2">
             <div class="mrgn">
                 <label>Описание</label><br />
                 <textarea class="mrgn textarea" placeholder="Описание" asp-for="Description" ></textarea>
                 <span asp-validation-for="Description"></span>
             </div>
         </div>
-        <div>
-            <input class="btn-submit" type="submit" value="Добавить" />
+        <div class="my-2">
+            <input class="btn btn-submit inline" type="submit" value="Добавить" />
         </div>
     </form>
-    <a class="enter-submit" method="get" asp-action="AllRoles" asp-controller="Role">Перейти к списку всех ролей</a>
+    <div class="my-2">
+        <a class="btn enter-submit inline" method="get" asp-action="AllRoles" asp-controller="Role">Перейти к списку всех ролей</a>
+    </div>
 </div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
